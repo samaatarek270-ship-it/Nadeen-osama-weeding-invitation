@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Our Engagement Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --brand:#b0cae4;
+      --line:#c6d3e5;
+      --paper:#ffffff;
+      --text:#223040;
+      --radius:22px;
+      --shadow:0 10px 24px rgba(0,0,0,.06);
+    }
+
+    * { box-sizing:border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: var(--text);
+      background: linear-gradient(to bottom, #87CEEB 0%, #E0F6FF 100%);
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url('Cloud.jpeg') repeat-x;
+      background-size: 1200px auto;
+      animation: moveClouds 80s linear infinite;
+      opacity: 0.8;
+      z-index: -1;
+    }
+    @keyframes moveClouds {
+      from { background-position-x: 0; }
+      to { background-position-x: 1000px; }
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 24px auto;
+      padding: 16px;
+    }
+
+    .stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 84vh;
+      text-align: center;
+    }
+
+    .envelope-wrap {
+      position: relative;
+      width: 560px;
+      max-width: 90vw;
+      cursor: pointer;
+      perspective: 1200px;
+    }
+
+    .envelope-title {
+      font-family: 'Playfair Display', serif;
+      color: var(--brand);
+      font-size: clamp(22px, 4vw, 30px);
+      text-align: center;
+      margin-bottom: 12px;
+      letter-spacing: .6px;
+      font-weight: 700;
+    }
+
+    .hint {
+      position: absolute;
+      left: 0; right: 0; bottom: 10px;
+      text-align: center;
+      font-size: 14px;
+      color: #4b5b8b;
+      opacity: .95;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .envelope {
+      position: relative;
+      width: 100%;
+      height: 360px;
+      border-radius: 18px;
+      background: var(--paper);
+      overflow: hidden;
+      border: 2px solid var(--line);
+      transition: all 0.6s ease;
+    }
+
+    @media (max-width: 480px) {
+      .envelope {
+        height: 260px;
+      }
+    }
+
+    .flap {
+      position: absolute;
+      left: 0; right: 0; top: 0;
+      height: 50%;
+      transform-origin: top;
+      transition: transform 1s cubic-bezier(.2,.7,.1,1);
+    }
+    .flap:after {
+      content:"";
+      position:absolute;
+      inset:0;
+      clip-path:polygon(0 0,100% 0,50% 100%);
+      background:var(--brand);
+      border-bottom:2px solid var(--line);
+    }
+
+    .seal {
+      position: absolute;
+      left: 50%;
+      top: 54%;
+      transform: translate(-50%, -50%);
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid var(--line);
+      display: grid;
+      place-items: center;
+      color: #5b6d84;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 24px;
+    }
+
+    .pocket {
+      position: absolute;
+      left: 0; right: 0; bottom: 0; top: 46%;
+      background: var(--paper);
+      border-top: 2px solid var(--line);
+    }
+
+    .open .flap { transform: rotateX(-178deg); }
+
+    section {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .card-outer {
+      background: #fff;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    /* ===== Photo Section ===== */
+    #photo {
+      background: linear-gradient(180deg, #fafdff 0%, #dbe8f6 100%);
+      text-align: center;
+      padding: 30px 15px;
+      border-radius: 22px;
+    }
+
+    #photo img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      display: block;
+      margin: 0 auto;
+      animation: fadeInUp 1s ease forwards;
+      object-fit: cover;
+      box-shadow: 0 0 0 6px #bcd5f3, 0 0 16px rgba(100,150,200,0.35);
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== Countdown Layout ===== */
+    .countdown {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    .pill {
+      flex: 1 1 120px;
+      background: #fff;
+      border: 2px solid var(--line);
+      border-radius: 18px;
+      padding: 16px 10px;
+      box-shadow: 0 6px 18px rgba(16,32,64,.06);
+    }
+
+    .num {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 6vw, 44px);
+      color: var(--brand);
+      line-height: 1;
+    }
+
+    .lbl {
+      margin-top: 6px;
+      color: #6b7aa8;
+      font-weight: 600;
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+      border-radius: 12px;
+    }
+
+    /* ===== Section Headings (now aligned left) ===== */
+    h2 {
+      font-size: 20px;
+      color: var(--brand);
+      margin-bottom: 12px;
+      text-align: left;   /* ← العنوان على الشمال */
+      direction: ltr;     /* ← للغة الإنجليزية */
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="stage">
+      <div class="envelope-title">Our Engagement Invitation💍</div>
+      <div id="envelope" class="envelope-wrap">
+        <div class="envelope">
+          <div class="flap"></div>
+          <div class="pocket"></div>
+          <div class="seal">M&H</div>
+          <div class="hint" id="hint">Tap to open the envelope</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PHOTO ===== -->
+    <section id="photo" class="card-outer">
+      <div style="max-width:520px;margin:auto;">
+        <img src="1c31c7c8-f11d-4b21-a4c3-673f8096ee7e.jpg" alt="Engagement Invitation">
+      </div>
+    </section>
+
+    <!-- ===== LOCATION ===== -->
+    <section id="map" class="card-outer">
+      <h2>Location</h2>
+      <iframe src="https://www.google.com/maps?q=30.0807978,31.3480044&hl=ar&z=18&output=embed" allowfullscreen loading="lazy"></iframe>
+    </section>
+
+    <!-- ===== COUNTDOWN ===== -->
+    <section id="count" class="card-outer">
+      <h2>Countdown to the engagement day</h2>
+      <div class="countdown" id="clock">
+        <div class="pill"><div class="num" id="d">0</div><div class="lbl">Days</div></div>
+        <div class="pill"><div class="num" id="h">0</div><div class="lbl">Hours</div></div>
+        <div class="pill"><div class="num" id="m">0</div><div class="lbl">Minutes</div></div>
+        <div class="pill"><div class="num" id="s">0</div><div class="lbl">Seconds</div></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const env = document.getElementById('envelope');
+    const hint = document.getElementById('hint');
+    const sections = ['photo','map','count'].map(id => document.getElementById(id));
+
+    function revealInOrder(){
+      sections.forEach((sec,i)=>setTimeout(()=>sec.classList.add('visible'),400+i*400));
+    }
+    function hideSections(){sections.forEach(sec=>sec.classList.remove('visible'));}
+
+    function toggleEnvelope(){
+      const willOpen=!env.classList.contains('open');
+      env.classList.toggle('open');
+      if(willOpen){
+        hint.textContent='Tap to close the envelope';
+        setTimeout(()=>{document.querySelector('.stage').scrollIntoView({behavior:'smooth'});revealInOrder();},700);
+      }else{
+        hint.textContent='Tap to open the envelope';
+        hideSections();
+      }
+    }
+    env.addEventListener('click',toggleEnvelope);
+    hint.addEventListener('click',e=>{e.stopPropagation();toggleEnvelope();});
+
+    // Countdown
+    const targetDate=new Date('2025-11-08T19:00:00+02:00');
+    function updateCountdown(){
+      const now=new Date();
+      const diff=targetDate-now;
+      if(diff<=0){['d','h','m','s'].forEach(id=>document.getElementById(id).textContent=0);return;}
+      const d=Math.floor(diff/86400000),
+            h=Math.floor((diff%86400000)/3600000),
+            m=Math.floor((diff%3600000)/60000),
+            s=Math.floor((diff%60000)/1000);
+      document.getElementById('d').textContent=d;
+      document.getElementById('h').textContent=h;
+      document.getElementById('m').textContent=m;
+      document.getElementById('s').textContent=s;
+    }
+    updateCountdown();
+    setInterval(updateCountdown,1000);
+  </script>
+</body>
+</html>
